@@ -19,25 +19,18 @@ BuildRequires:  gettext
 BuildRequires:	desktop-file-utils
 BuildSystem:	meson
 
+Requires: typelib(WebKit)
+Requires: webkit
 
 %description
 Wike is a Wikipedia reader for the GNOME Desktop. 
-Provides access to all the content of this online encyclopedia in a native application, with a simpler and 
+Provides access to all the content of this online encyclopedia 
+in a native application, with a simpler and 
 distraction-free view of articles.
 
-* Open multiple articles in tabs
-* More than 300 languages
-* Search suggestions
-* Bookmarks management
-* History of recent articles
-* Table of contents
-* Text search in articles
-* Print articles
-* Light, dark and sepia themes
-* Desktop and mobile layouts
-* GNOME Shell search integration
-
-%install -a
+%install
+%meson_install
+%find_lang %{name}
 desktop-file-validate %{buildroot}/%{_datadir}/applications/%{appid}.desktop
 
 %files -f %{name}.lang
