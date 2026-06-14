@@ -3,12 +3,12 @@
 %define oname Wike
 
 Name:		wike
-Version:	3.2.0	
+Version:	3.2.1
 Release:	1
 URL:		https://github.com/hugolabe/Wike
 Source0:	https://github.com/hugolabe/Wike/archive/%{version}/%{oname}-%{version}.tar.gz
 Summary:	Wikipedia reader for the GNOME desktop	
-License:	GPLv3+
+License:	GPL-3.0-or-later
 Group:		Applications/Internet
  
 BuildRequires:	appstream
@@ -19,6 +19,7 @@ BuildRequires:  gettext
 BuildRequires:	desktop-file-utils
 BuildSystem:	meson
 
+Requires: libadwaita-common
 Requires: typelib(WebKit)
 Requires: webkit
 
@@ -28,8 +29,7 @@ Provides access to all the content of this online encyclopedia
 in a native application, with a simpler and 
 distraction-free view of articles.
 
-%install
-%meson_install
+%install -a
 %find_lang %{name}
 desktop-file-validate %{buildroot}/%{_datadir}/applications/%{appid}.desktop
 
